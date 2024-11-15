@@ -2,12 +2,11 @@ package com.iesvdc.proyecto.aceituna.dao;
 
 import com.iesvdc.proyecto.aceituna.entidades.Almazara;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface AlmazaraDAO {
     //Crea una nueva almazara en la base de datos.
-    boolean crearAlmazara(Almazara almazara);
+    void crearAlmazara(Almazara almazara);
 
     //Obtiene una almazara por su ID.
     Almazara obtenerAlmazaraPorId(int id);

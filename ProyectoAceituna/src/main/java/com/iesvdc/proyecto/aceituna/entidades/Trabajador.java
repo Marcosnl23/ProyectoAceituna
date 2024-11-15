@@ -30,6 +30,14 @@ public class Trabajador {
         this.id = id;
     }
 
+    public Trabajador(int id, String nombre, int edad, String puesto, Double salario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.puesto = puesto;
+        this.salario = salario;
+    }
+
     public int getId() {
         return id;
     }

@@ -14,13 +14,14 @@ public class FactoriaConexion {
     private FactoriaConexion() {
         // Constructor privado para evitar instancias
     }
+
     public static Connection getConnection() {
         conn = null;
-        File fichero= new File("G:\\Mi unidad\\2DAM\\Acceso a datos\\ProyectoAceituna\\ProyectoAceituna\\db.properties");
+        File fichero = new File("G:\\Mi unidad\\2DAM\\Acceso a datos\\ProyectoAceituna\\ProyectoAceituna\\db.properties");
         try (FileInputStream fis = new FileInputStream(fichero)) {
             Properties prop = new Properties();
             prop.load(fis);
-            if (prop.getProperty("driver").equals("MySQL")) {
+            if ("MySQL".equals(prop.getProperty("driver"))) {
                 conn = DriverManager.getConnection(
                         "jdbc:mysql://" + prop.getProperty("host") + ":" +
                                 prop.getProperty("port") +

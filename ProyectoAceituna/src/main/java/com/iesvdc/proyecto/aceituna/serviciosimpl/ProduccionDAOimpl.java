@@ -22,7 +22,7 @@ public class ProduccionDAOimpl implements ProduccionDAO {
 
     @Override
     public boolean crearProduccion(Produccion produccion) {
-        String query = "INSERT INTO produccion (id_cuadrilla, id_olivar, id_almazara, fecha, cantidad_recogida) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO produccion (cuadrilla_id, olivar_id, almazara_id, fecha, cantidadRecolectada) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, produccion.getCuadrilla_id().getId());
             stmt.setInt(2, produccion.getOlivar_id().getId());

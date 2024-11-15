@@ -19,7 +19,7 @@ public class CuadrillaDAOimpl implements CuadrillaDAO {
 
     @Override
     public boolean crearCuadrilla(Cuadrilla cuadrilla) {
-        String query = "INSERT INTO cuadrillas (nombre, supervisor_id) VALUES (?, ?)";
+        String query = "INSERT INTO cuadrilla (nombre, supervisor_id) VALUES (?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, cuadrilla.getNombre());
             stmt.setInt(2, cuadrilla.getSupervisor_id().getId());

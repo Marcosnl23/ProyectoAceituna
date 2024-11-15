@@ -17,16 +17,15 @@ public class AlmazaraDAOimpl implements AlmazaraDAO {
     }
 
     @Override
-    public boolean crearAlmazara(Almazara almazara) {
-        String query = "INSERT INTO almazaras (nombre, ubicacion, capacidad) VALUES (?, ?, ?)";
+    public void crearAlmazara(Almazara almazara) {
+        String query = "INSERT INTO almazara (nombre, ubicacion, capacidad) VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, almazara.getNombre());
             stmt.setString(2, almazara.getUbicacion());
             stmt.setDouble(3, almazara.getCapacidad());
-            return stmt.executeUpdate() > 0;
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
     }
 

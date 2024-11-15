@@ -19,7 +19,7 @@ public class OlivarDAOimpl implements OlivarDAO {
 
     @Override
     public boolean crearOlivar(Olivar olivar) {
-        String query = "INSERT INTO olivares (ubicacion, hectareas, produccion_anual) VALUES (?, ?, ?)";
+        String query = "INSERT INTO olivar (ubicacion, hectareas, produccionAnual) VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, olivar.getUbicacion());
             stmt.setDouble(2, olivar.getHectareas());
@@ -30,8 +30,6 @@ public class OlivarDAOimpl implements OlivarDAO {
                 try (ResultSet rs = stmt.getGeneratedKeys()) {
                     if (rs.next()) {
                         int olivarId = rs.getInt(1);
-                        // Insertar las cuadrillas asociadas al olivar en la tabla intermedia cuadrilla_olivares
-                        insertarCuadrillas(olivarId, olivar.getCuadrillas());
                     }
                 }
                 return true;
