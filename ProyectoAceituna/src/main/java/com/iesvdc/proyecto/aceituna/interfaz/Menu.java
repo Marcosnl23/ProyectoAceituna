@@ -40,35 +40,35 @@ public class Menu {
                 System.out.println("0. Salir.");
 
                 int opcion = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine();
 
                 switch (opcion) {
                     case 1:
-                        mostrarTrabajadoresDeCuadrilla(scanner);
+                        mostrarTrabajadoresDeCuadrilla();
                         break;
                     case 2:
-                        mostrarCuadrillasSupervisadasPorTrabajador(scanner);
+                        mostrarCuadrillasSupervisadasPorTrabajador();
                         break;
                     case 3:
-                        mostrarOlivaresDeCuadrilla(scanner);
+                        mostrarOlivaresDeCuadrilla();
                         break;
                     case 4:
-                        mostrarCuadrillasDeOlivar(scanner);
+                        mostrarCuadrillasDeOlivar();
                         break;
                     case 5:
-                        mostrarAlmazarasDeCuadrilla(scanner);
+                        mostrarAlmazarasDeCuadrilla();
                         break;
                     case 6:
-                        mostrarProduccionEnFecha(scanner);
+                        mostrarProduccionEnFecha();
                         break;
                     case 7:
-                        mostarProduccionHastaFechaAlmazara(scanner);
+                        mostarProduccionHastaFechaAlmazara();
                         break;
                     case 8:
-                        mostrarProduccionHastaFechaOlivar(scanner);
+                        mostrarProduccionHastaFechaOlivar();
                         break;
                     case 9:
-                        mostrarProduccionHastaFechaCuadrilla(scanner);
+                        mostrarProduccionHastaFechaCuadrilla();
                         break;
                     case 0:
                         System.out.println("Saliendo...");
@@ -78,11 +78,12 @@ public class Menu {
                 }
             }
         } finally {
-            scanner.close(); // Cerrar el scanner para evitar fugas de recursos
+            scanner.close();
         }
     }
 
-    public void mostrarTrabajadoresDeCuadrilla(Scanner scanner) {
+    public void mostrarTrabajadoresDeCuadrilla() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce el ID de la cuadrilla: ");
         int cuadrillaId = scanner.nextInt();
 
@@ -106,7 +107,8 @@ public class Menu {
         }
     }
 
-    public void mostrarCuadrillasSupervisadasPorTrabajador(Scanner scanner) {
+    public void mostrarCuadrillasSupervisadasPorTrabajador() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce el ID del trabajador (supervisor): ");
         int trabajadorId = scanner.nextInt();
         scanner.nextLine();
@@ -129,7 +131,8 @@ public class Menu {
         }
     }
 
-    public void mostrarOlivaresDeCuadrilla(Scanner scanner) {
+    public void mostrarOlivaresDeCuadrilla() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce el ID de la cuadrilla: ");
         int cuadrillaId = scanner.nextInt();
         scanner.nextLine();
@@ -153,7 +156,8 @@ public class Menu {
         }
     }
 
-    public void mostrarCuadrillasDeOlivar(Scanner scanner) {
+    public void mostrarCuadrillasDeOlivar() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce el ID del olivar: ");
         int olivarId = scanner.nextInt();
         scanner.nextLine();
@@ -176,7 +180,8 @@ public class Menu {
         }
     }
 
-    public void mostrarAlmazarasDeCuadrilla(Scanner scanner) {
+    public void mostrarAlmazarasDeCuadrilla() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce el ID de la cuadrilla: ");
         int cuadrillaId = scanner.nextInt();
         scanner.nextLine();
@@ -199,14 +204,15 @@ public class Menu {
         }
     }
 
-    public void mostrarProduccionEnFecha(Scanner scanner) {
+    public void mostrarProduccionEnFecha() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce el ID de la cuadrilla: ");
         int cuadrillaId = scanner.nextInt();
-        scanner.nextLine();  // Limpiar el buffer
+        scanner.nextLine();
 
         System.out.print("Introduce el ID de la almazara: ");
         int almazaraId = scanner.nextInt();
-        scanner.nextLine();  // Limpiar el buffer
+        scanner.nextLine();
 
         System.out.print("Introduce la fecha (yyyy-mm-dd): ");
         String fechaStr = scanner.nextLine();
@@ -214,7 +220,7 @@ public class Menu {
         // Convertir la fecha a LocalDate
         LocalDate fecha;
         try {
-            fecha = LocalDate.parse(fechaStr);  // Convertir la cadena a LocalDate
+            fecha = LocalDate.parse(fechaStr);
         } catch (DateTimeParseException e) {
             System.out.println("Error: La fecha proporcionada no tiene el formato correcto (yyyy-mm-dd).");
             return; // Salir del método si la fecha es inválida
@@ -243,7 +249,8 @@ public class Menu {
         }
     }
 
-    public void mostarProduccionHastaFechaAlmazara(Scanner scanner) {
+    public void mostarProduccionHastaFechaAlmazara() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce el ID de la almazara: ");
         int almazaraId = scanner.nextInt();
         scanner.nextLine();
@@ -282,7 +289,8 @@ public class Menu {
         }
     }
 
-    public void mostrarProduccionHastaFechaOlivar(Scanner scanner) {
+    public void mostrarProduccionHastaFechaOlivar() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce el ID del olivar: ");
         int olivarId = scanner.nextInt();
         scanner.nextLine();
@@ -321,7 +329,8 @@ public class Menu {
         }
     }
 
-    public void mostrarProduccionHastaFechaCuadrilla(Scanner scanner) {
+    public void mostrarProduccionHastaFechaCuadrilla() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Introduce el ID de la cuadrilla: ");
         int cuadrillaId = scanner.nextInt();
         scanner.nextLine();

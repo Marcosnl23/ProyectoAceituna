@@ -126,9 +126,9 @@ public class ProduccionDAOimpl implements ProduccionDAO {
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             // Establecemos los parámetros de la consulta
-            stmt.setInt(1, cuadrillaId);  // ID de la cuadrilla
-            stmt.setInt(2, almazaraId);   // ID de la almazara
-            stmt.setDate(3, Date.valueOf(fecha));  // Fecha exacta
+            stmt.setInt(1, cuadrillaId);
+            stmt.setInt(2, almazaraId);
+            stmt.setDate(3, Date.valueOf(fecha));
 
             // Ejecutamos la consulta
             ResultSet rs = stmt.executeQuery();
