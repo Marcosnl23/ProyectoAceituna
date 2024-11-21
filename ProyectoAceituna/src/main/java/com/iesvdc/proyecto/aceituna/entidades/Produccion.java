@@ -1,13 +1,22 @@
 package com.iesvdc.proyecto.aceituna.entidades;
 
+import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
-
+@XmlRootElement(name = "produccion")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = { "id", "cuadrilla_id", "olivar_id", "almazara_id", "fecha", "cantidadRecogida" })
 public class Produccion {
+    @XmlAttribute(name = "id")
     private int id;
+    @XmlElement(name = "cuadrilla")
     private Cuadrilla cuadrilla_id;
+    @XmlElement(name = "olivar")
     private Olivar olivar_id;
+    @XmlElement(name = "almazara")
     private Almazara almazara_id;
+    @XmlElement(name = "fecha")
     private LocalDate fecha;
+    @XmlElement(name = "cantidadRecogida")
     private Double cantidadRecogida;
 
     public Produccion(int id, Cuadrilla cuadrilla_id, Olivar olivar_id, Almazara almazara_id, LocalDate fecha, Double cantidadRecogida) {

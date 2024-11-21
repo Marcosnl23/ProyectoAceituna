@@ -48,7 +48,7 @@ public class AlmazaraDAOimpl implements AlmazaraDAO {
     @Override
     public List<Almazara> obtenerTodasAlmazaras() {
         List<Almazara> almazaras = new ArrayList<>();
-        String query = "SELECT * FROM almazaras";
+        String query = "SELECT * FROM almazara";
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
                 Almazara almazara = new Almazara(rs.getInt("id"), rs.getString("nombre"),

@@ -1,12 +1,30 @@
 package com.iesvdc.proyecto.aceituna.entidades;
 
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlType;
+
 import java.util.List;
 
+@XmlRootElement(name = "cuadrilla")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = { "id", "nombre", "supervisor_id", "trabajadores", "olivares" })
 public class Cuadrilla {
+    @XmlAttribute(name = "id")
     private int id;
+    @XmlElement(name = "nombre")
     private String nombre;
+    @XmlElement(name = "supervisor_id")
     private Trabajador supervisor_id;
+    @XmlElementWrapper(name = "trabajadores")
+    @XmlElement(name = "trabajador")
     private List<Trabajador> trabajadores;
+    @XmlElementWrapper(name = "olivares")
+    @XmlElement(name = "olivar")
     private List<Olivar> olivares;
 
     public Cuadrilla(int id, String nombre, Trabajador supervisor_id, List<Trabajador> trabajadores, List<Olivar> olivares) {

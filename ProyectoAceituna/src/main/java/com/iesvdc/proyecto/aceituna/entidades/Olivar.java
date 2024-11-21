@@ -1,12 +1,21 @@
 package com.iesvdc.proyecto.aceituna.entidades;
 
+import javax.xml.bind.annotation.*;
 import java.util.List;
-
+@XmlRootElement(name = "olivar")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = { "id", "ubicacion", "hectareas", "produccionAnual", "cuadrillas" })
 public class Olivar {
+    @XmlAttribute(name = "id")
     private int id;
+    @XmlElement(name = "ubicacion")
     private String ubicacion;
+    @XmlElement(name = "hectareas")
     private Double hectareas;
+    @XmlElement(name = "produccionAnual")
     private Double produccionAnual;
+    @XmlElementWrapper(name = "cuadrillas")
+    @XmlElement(name = "cuadrilla")
     private List<Cuadrilla> cuadrillas;
 
     public Olivar(int id, String ubicacion, Double hectareas, Double produccionAnual, List<Cuadrilla> cuadrillas) {

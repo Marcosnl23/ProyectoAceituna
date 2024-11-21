@@ -72,11 +72,11 @@ public class ProduccionDAOimpl implements ProduccionDAO {
             OlivarDAOimpl olivarDAO = new OlivarDAOimpl(connection);
             AlmazaraDAOimpl almazaraDAO = new AlmazaraDAOimpl(connection);
             while (rs.next()) {
-                Cuadrilla cuadrilla = cuadrillaDAO.obtenerCuadrillaPorId(rs.getInt("id_cuadrilla"));
-                Olivar olivar = olivarDAO.obtenerOlivarPorId(rs.getInt("id_olivar"));
-                Almazara almazara = almazaraDAO.obtenerAlmazaraPorId(rs.getInt("id_almazara"));
+                Cuadrilla cuadrilla = cuadrillaDAO.obtenerCuadrillaPorId(rs.getInt("cuadrilla_id"));
+                Olivar olivar = olivarDAO.obtenerOlivarPorId(rs.getInt("olivar_id"));
+                Almazara almazara = almazaraDAO.obtenerAlmazaraPorId(rs.getInt("almazara_id"));
                 LocalDate fecha = rs.getDate("fecha").toLocalDate();
-                Double cantidadRecogida = rs.getDouble("cantidad_recogida");
+                Double cantidadRecogida = rs.getDouble("cantidadRecolectada");
 
                 producciones.add(new Produccion(rs.getInt("id"), cuadrilla, olivar, almazara, fecha, cantidadRecogida));
             }

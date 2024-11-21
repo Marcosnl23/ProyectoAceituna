@@ -71,7 +71,7 @@ public class CuadrillaDAOimpl implements CuadrillaDAO {
     @Override
     public List<Cuadrilla> obtenerTodasCuadrillas() {
         List<Cuadrilla> cuadrillas = new ArrayList<>();
-        String query = "SELECT * FROM cuadrillas";
+        String query = "SELECT * FROM cuadrilla";
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
             TrabajadorDAOimpl trabajadorDAO = new TrabajadorDAOimpl(connection);
             OlivarDAOimpl olivarDAO = new OlivarDAOimpl(connection);

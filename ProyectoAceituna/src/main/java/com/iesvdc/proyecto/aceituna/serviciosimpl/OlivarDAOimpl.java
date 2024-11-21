@@ -92,13 +92,13 @@ public class OlivarDAOimpl implements OlivarDAO {
     @Override
     public List<Olivar> obtenerTodosLosOlivares() {
         List<Olivar> olivares = new ArrayList<>();
-        String query = "SELECT * FROM olivares";
+        String query = "SELECT * FROM olivar";
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String ubicacion = rs.getString("ubicacion");
                 Double hectareas = rs.getDouble("hectareas");
-                Double produccionAnual = rs.getDouble("produccion_anual");
+                Double produccionAnual = rs.getDouble("produccionAnual");
 
                 // Obtener las cuadrillas asociadas al olivar
                 List<Cuadrilla> cuadrillas = obtenerCuadrillasPorOlivar(id);

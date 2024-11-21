@@ -2,6 +2,7 @@ package com.iesvdc.proyecto.aceituna.interfaz;
 
 import com.iesvdc.proyecto.aceituna.conexion.FactoriaConexion;
 import com.iesvdc.proyecto.aceituna.entidades.*;
+import com.iesvdc.proyecto.aceituna.gestores.GestorDeArchivos;
 import com.iesvdc.proyecto.aceituna.serviciosimpl.*;
 
 import java.sql.Connection;
@@ -37,6 +38,10 @@ public class Menu {
                 System.out.println("7. Mostrar la producción hasta una determinada fecha, de una determinada almazara.");
                 System.out.println("8. Mostrar la producción hasta una determinada fecha, de un determinado olivar.");
                 System.out.println("9. Mostrar la producción hasta una determinada fecha, de una cuadrilla determinada.");
+                System.out.println("10.MarshallXml toda la base de datos.");
+                System.out.println("11.UnmarshallXml toda la base de datos.");
+                System.out.println("12.MarshallJSON toda la base de datos.");
+                System.out.println("13.UnmarshallJSON toda la base de datos.");
                 System.out.println("0. Salir.");
 
                 int opcion = scanner.nextInt();
@@ -69,6 +74,17 @@ public class Menu {
                         break;
                     case 9:
                         mostrarProduccionHastaFechaCuadrilla();
+                        break;
+                    case 10:
+                        GestorDeArchivos.marshallObjetos();
+                        break;
+                    case 11:
+                        GestorDeArchivos.unmarshallObjetos();
+                    case 12:
+                        GestorDeArchivos.marshallObjetosJson();
+                        break;
+                    case 13:
+                        GestorDeArchivos.unmarshallObjetosJson();
                         break;
                     case 0:
                         System.out.println("Saliendo...");
