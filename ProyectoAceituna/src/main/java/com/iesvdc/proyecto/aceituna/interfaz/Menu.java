@@ -42,6 +42,7 @@ public class Menu {
                 System.out.println("11.UnmarshallXml toda la base de datos.");
                 System.out.println("12.MarshallJSON toda la base de datos.");
                 System.out.println("13.UnmarshallJSON toda la base de datos.");
+                System.out.println("14. Crear un nueva produccion.");
                 System.out.println("0. Salir.");
 
                 int opcion = scanner.nextInt();
@@ -85,6 +86,9 @@ public class Menu {
                         break;
                     case 13:
                         GestorDeArchivos.unmarshallObjetosJson();
+                        break;
+                    case 14:
+                        crearProduccion();
                         break;
                     case 0:
                         System.out.println("Saliendo...");
@@ -382,6 +386,59 @@ public class Menu {
             }
         } catch (Exception e) {
             System.out.println("Error al obtener la producción: " + e.getMessage());
+        }
+    }
+
+    public void crearProduccion() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduce el ID de la cuadrilla: ");
+        int cuadrillaId = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Introduce el ID del olivar: ");
+        int olivarId = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Introduce el ID de la almazara: ");
+        int almazaraId = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Introduce la fecha (yyyy-mm-dd): ");
+        String fechaStr = scanner.nextLine();
+
+        System.out.print("Introduce la cantidad recolectada (kg): ");
+        double cantidadRecolectada = scanner.nextDouble();
+        scanner.nextLine();
+
+        // Convertir la fecha a LocalDate
+        LocalDate fecha;
+        try {
+            fecha = LocalDate.parse(fechaStr);  // Convertir la cadena a LocalDate
+        } catch (DateTimeParseException e) {
+            System.out.println("Error: La fecha proporcionada no tiene el formato correcto (yyyy-mm-dd).");
+            return; // Salir del método si la fecha es inválida
+        }
+
+        try {
+            // Crear un nuevo objeto Produccion
+            Produccion produccion = new Produccion();
+            produccion.setCuadrilla_id(cuadrillaDAO.obtenerCuadrillaPorId(cuadrillaId));
+            produccion.setOlivar_id(olivarDAO.obtenerOlivarPorId(olivarId));
+            produccion.setAlmazara_id(almazaraDAO.obtenerAlmazaraPorId(almazaraId));
+            produccion.setFecha(fecha);
+            produccion.setCantidadRecogida(cantidadRecolectada);
+
+            FactoriaConexion.createTriggers();
+            // Insertar la producción en la base de datos
+            boolean exito = produccionDAO.crearProduccion(produccion);
+
+            if (exito){
+                System.out.println("Producción creada correctamente.");
+            } else {
+                System.out.println("Error al crear la producción.");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al crear la producción: " + e.getMessage());
         }
     }
 
